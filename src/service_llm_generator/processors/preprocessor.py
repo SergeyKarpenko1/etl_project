@@ -1,6 +1,7 @@
 from typing import List, Dict
 import re
 
+
 class Preprocessor:
     """Класс для очистки и подготовки текста перед моделью."""
 

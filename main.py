@@ -9,5 +9,6 @@ async def main():
     pipeline = ETLPipeline(db_client=db)
     await pipeline.run()  # просто так, без аргументов
 
+
 if __name__ == "__main__":
     asyncio.run(main())

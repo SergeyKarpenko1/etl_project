@@ -1,5 +1,6 @@
 from typing import List, Dict
 
+
 class Postprocessor:
     """Преобразует сырые предсказания модели в удобный формат."""
 

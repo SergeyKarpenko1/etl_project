@@ -4,6 +4,7 @@ from service_llm_generator.processors.preprocessor import Preprocessor
 from service_llm_generator.models.toxicity_classifier import ModelClient
 from service_llm_generator.processors.postprocessor import Postprocessor
 
+
 class ETLPipeline:
     """Асинхронный батчевый ETL-пайплайн."""
 

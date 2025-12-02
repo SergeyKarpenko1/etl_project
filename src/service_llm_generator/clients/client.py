@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import List, Dict
 
+
 class DBCSVClient:
     """
     Заменяет реальную БД, имитируя fetch/save через CSV-файл.

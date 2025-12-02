@@ -3,17 +3,20 @@ import pandas as pd
 from pathlib import Path
 from service_llm_generator.clients.client import DBCSVClient
 
+
 @pytest.mark.asyncio
 async def test_fetch_batch(tmp_path: Path):
     # ───────────────
     # 1. Создаём тестовый CSV
     # ───────────────
     csv_path = tmp_path / "input.csv"
-    df = pd.DataFrame([
-        {"iid": 1, "text": "Привет"},
-        {"iid": 2, "text": "Ты супер!"},
-        {"iid": 3, "text": "Как дела?"}
-    ])
+    df = pd.DataFrame(
+        [
+            {"iid": 1, "text": "Привет"},
+            {"iid": 2, "text": "Ты супер!"},
+            {"iid": 3, "text": "Как дела?"},
+        ]
+    )
     df.to_csv(csv_path, index=False)
 
     client = DBCSVClient(input_path=csv_path, output_path=tmp_path / "output.csv")
@@ -34,8 +37,7 @@ async def test_save_results(tmp_path: Path):
     # ───────────────
     output_path = tmp_path / "output.csv"
     client = DBCSVClient(
-        input_path=tmp_path / "input.csv",   # не используется
-        output_path=output_path
+        input_path=tmp_path / "input.csv", output_path=output_path  # не используется
     )
 
     batch = [

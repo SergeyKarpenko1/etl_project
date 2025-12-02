@@ -2,6 +2,7 @@ from typing import List, Dict
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
 
+
 class ModelClient:
     """Класс для работы с русскоязычной моделью токсичности (BERT)."""
 
@@ -14,7 +15,9 @@ class ModelClient:
         texts = [item["text"] for item in batch]
 
         # Токенизация батча
-        encoded = self.tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
+        encoded = self.tokenizer(
+            texts, padding=True, truncation=True, return_tensors="pt"
+        )
 
         with torch.no_grad():
             outputs = self.model(**encoded)

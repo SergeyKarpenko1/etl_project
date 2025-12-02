@@ -1,6 +1,7 @@
 import pytest
 from service_llm_generator.processors.postprocessor import Postprocessor
 
+
 def test_postprocessor_rounds_scores():
     post = Postprocessor()
     batch = [
@@ -25,13 +26,15 @@ def test_postprocessor_handles_string_scores():
 
 def test_postprocessor_preserves_other_fields():
     post = Postprocessor()
-    batch = [{
-        "id": 10,
-        "text": "тест",
-        "toxicity_score": 0.5566,
-        "is_toxic": 1,
-        "extra": "value"
-    }]
+    batch = [
+        {
+            "id": 10,
+            "text": "тест",
+            "toxicity_score": 0.5566,
+            "is_toxic": 1,
+            "extra": "value",
+        }
+    ]
 
     result = post.process_batch(batch)
 
