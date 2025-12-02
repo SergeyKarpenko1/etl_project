@@ -34,8 +34,13 @@ class ToxicityModel:
 
 
 class ModelClient:
-    def __init__(self, model: ToxicityModel | None = None, threshold: float = 0.5):
-        self.model = model or ToxicityModel()
+    def __init__(
+        self,
+        model: ToxicityModel | None = None,
+        model_name: str = "s-nlp/russian_toxicity_classifier",
+        threshold: float = 0.5,
+    ):
+        self.model = model or ToxicityModel(model_name=model_name)
         self.threshold = threshold
 
     def preprocess(self, batch: List[Dict]) -> List[str]:
