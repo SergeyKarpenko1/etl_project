@@ -10,9 +10,13 @@ class ETLPipeline:
 
     def __init__(self, db_client: DBCSVClient):
         self.db_client = db_client
+        self._setup_components()
+
+    def _setup_components(self) -> None:
         self.preprocessor = Preprocessor()
-        self.model = ModelClient()
+        self.model = ModelClient()  # внутри он уже вызывает свой _load_model()
         self.postprocessor = Postprocessor()
+
 
     async def run(self):
         batch: List[Dict] = await self.db_client.fetch_batch()
