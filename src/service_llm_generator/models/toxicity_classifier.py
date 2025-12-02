@@ -24,7 +24,9 @@ class ToxicityModel:
         self.model.eval()
 
     def predict_scores(self, texts: Sequence[str]) -> List[float]:
-        encoded = self.tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
+        encoded = self.tokenizer(
+            texts, padding=True, truncation=True, return_tensors="pt"
+        )
         with torch.no_grad():
             logits = self.model(**encoded).logits
             probs = torch.softmax(logits, dim=-1)
